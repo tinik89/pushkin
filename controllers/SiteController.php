@@ -4,13 +4,12 @@ namespace app\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
-class SiteController extends Controller
+class SiteController extends AppController
 {
     /**
      * {@inheritdoc}
@@ -54,6 +53,11 @@ class SiteController extends Controller
         ];
     }
 
+
+    public function goLogin()
+    {
+        return Yii::$app->getResponse()->redirect('/login');
+    }
     /**
      * Displays homepage.
      *
@@ -61,6 +65,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goLogin();
+        }
         return $this->render('index');
     }
 
@@ -105,6 +112,9 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goLogin();
+        }
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
