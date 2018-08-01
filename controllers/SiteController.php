@@ -45,6 +45,7 @@ class SiteController extends AppController
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
+                'layout' => 'login',
             ],
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
@@ -63,6 +64,7 @@ class SiteController extends AppController
      *
      * @return string
      */
+
     public function actionIndex()
     {
         if (Yii::$app->user->isGuest) {
@@ -106,34 +108,35 @@ class SiteController extends AppController
         return $this->goHome();
     }
 
-    /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
-    public function actionContact()
+    public function actionDebts()
     {
         if (Yii::$app->user->isGuest) {
             return $this->goLogin();
         }
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
 
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
+        return $this->render('debets');
     }
 
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
+
+    public function actionNearest()
     {
-        return $this->render('about');
+        return $this->render('nearest');
     }
+
+    public function actionHistory()
+    {
+        return $this->render('history');
+    }
+
+    public function actionCounterparties()
+    {
+        return $this->render('counterparties');
+    }
+
+    public function actionCommunications()
+    {
+        return $this->render('communications');
+    }
+
+
 }

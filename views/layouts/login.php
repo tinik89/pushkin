@@ -41,9 +41,7 @@ IeAsset::register($this);
 		<!-- Wrapper -->
 		<div class="login-container">
 
-            <div class="title">Hello!</div>
-            <div class="subtitle">Войдите под учетными данными <br />которые вам дали в Pushkin Studio</div>
-            <div class="login-form">
+
                 <?=$content;?>
 
             </div>
