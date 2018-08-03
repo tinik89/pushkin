@@ -29,6 +29,7 @@ class AppAsset extends AssetBundle
         'js/jquery.formstyler.min.js',
         'js/jquery.maskedinput.js',
         'js/jquery.validate.min.js',
+        'js/jquery.mswitch.js',
         'js/script.js',
     ];
     public $depends = [

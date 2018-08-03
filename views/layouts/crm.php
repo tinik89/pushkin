@@ -187,31 +187,11 @@ IeAsset::register($this);
             </form>
             <span class="close"></span>
         </div>
-        <!-- Client Popup -->
+        <!-- Admin Popup -->
         <div class="nonebox" id="admin-popup">
-            <form id="add-admin-form" method="post">
-                <div class="c-form">
-                    <div class="title client">Добавить админа</div>
-                    <div class="group">
-                        <div class="label">Логин *</div>
-                        <div class="field">
-                            <input type="text" name="name" placeholder="" required/>
-                        </div>
-                    </div>
-                    <div class="group">
-                        <div class="label">Пароль *</div>
-                        <div class="field">
-                            <input type="text" name="text" placeholder="" required/>
-                        </div>
-                    </div>
 
-                    <div class="group bts">
-                        <input type="submit" class="submit-btn" value="Отправить"/>
-                        <a href="#" class="cancel-btn">Отменить</a>
-                        <div class="clear"></div>
-                    </div>
-                </div>
-            </form>
+            <?= \app\components\AdminWidget::widget(); ?>
+
             <span class="close"></span>
         </div>
 
