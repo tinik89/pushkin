@@ -7,11 +7,11 @@
         <!-- titles -->
         <div class="titles">
             <div class="title">Контрагенты</div>
-            <div class="subtitle">Весь список клиентов</div>
+            <div class="subtitle">Весь список контрагентов</div>
         </div>
 
         <!-- add client -->
-        <a href="#" class="add-client-btn">Добавить клиента</a>
+        <a href="#" class="add-client-btn">Добавить контрагента</a>
 
         <!-- search -->
         <div class="search">

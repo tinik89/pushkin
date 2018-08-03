@@ -4217,3 +4217,26 @@ ul.t-info-list li {
   .inner-tabs .tab-menu ul li a {
     padding: 0 34px;
     font-size: 18px; } }
+
+/*tin*/
+
+.header .h-profile .profile-body {
+  display:none;
+  position: absolute;
+  padding: 10px;
+  border: 2px solid #F17685;
+  background: #fff;
+  border-radius: 5px;
+}
+.header .h-profile .profile-body .add-admin{
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.header .h-profile .pro-head.active::before{
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+/*ENDtin*/

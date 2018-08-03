@@ -10,6 +10,25 @@ $(window).on("load", function() {
 });
 
 $(function() {
+	// tin
+	$('.pro-head').on('click', function(){
+		$(this).toggleClass('active');
+		$('.profile-body').slideToggle();
+	});
+	$('.header .h-profile .profile-body .add-admin button').on('click', function(){
+        $('.overlay').fadeIn(250, function(){
+            $('#admin-popup').animate({'top': $(window).scrollTop() + 100}, 500);
+        });
+        return false;
+	});
+    $('.overlay, #admin-popup .cancel-btn, #admin-popup .close').click(function(){
+        $('#admin-popup').animate({'top': '-3000px'}, 500, function(){
+            $('.overlay').fadeOut(250);
+        });
+        return false;
+    });
+	// ENDtin
+
 	var width = $(window).width();
 	var height = $(window).height();
     

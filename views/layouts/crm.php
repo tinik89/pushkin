@@ -102,14 +102,22 @@ IeAsset::register($this);
                         <!-- profile -->
                         <div class="h-profile">
                             <div class="pro-head">
-                                <div class="name">Hello, <span>Сергей</span></div>
+                                <div class="name">Hello, <span><?=Yii::$app->user->identity->username?></span></div>
                                 <div class="img"><img src="images/profile.jpg" alt=""/></div>
-                                <?php echo Html::beginForm(['/site/logout'], 'post')
-                                    . Html::submitButton(
-                                        'Logout (' . Yii::$app->user->identity->username . ')',
-                                        ['class' => 'btn btn-link logout']
-                                    )
-                                    . Html::endForm() ?>
+
+                            </div>
+                            <div class="profile-body">
+                                <div class="c-form add-admin">
+                                    <button class="submit-btn">Добавить админа</button>
+
+                                </div>
+                            <?= Html::beginForm(['/site/logout'], 'post',['class'=>'c-form'])?>
+                               <?= Html::submitButton(
+                                    'Выйти (' . Yii::$app->user->identity->username . ')',
+                                    ['class' => 'btn btn-link logout cancel-btn']
+                                )?>
+                                <?= Html::endForm(); ?>
+
                             </div>
                         </div>
 
@@ -170,6 +178,33 @@ IeAsset::register($this);
                             <input type="tel" name="tel" placeholder="" required/>
                         </div>
                     </div>
+                    <div class="group bts">
+                        <input type="submit" class="submit-btn" value="Отправить"/>
+                        <a href="#" class="cancel-btn">Отменить</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </form>
+            <span class="close"></span>
+        </div>
+        <!-- Client Popup -->
+        <div class="nonebox" id="admin-popup">
+            <form id="add-admin-form" method="post">
+                <div class="c-form">
+                    <div class="title client">Добавить админа</div>
+                    <div class="group">
+                        <div class="label">Логин *</div>
+                        <div class="field">
+                            <input type="text" name="name" placeholder="" required/>
+                        </div>
+                    </div>
+                    <div class="group">
+                        <div class="label">Пароль *</div>
+                        <div class="field">
+                            <input type="text" name="text" placeholder="" required/>
+                        </div>
+                    </div>
+
                     <div class="group bts">
                         <input type="submit" class="submit-btn" value="Отправить"/>
                         <a href="#" class="cancel-btn">Отменить</a>
