@@ -1,8 +1,9 @@
 <?php
 
-namespace app\models;
+namespace app\models\forms;
 
-use Yii;
+use yii\base\Model;
+use app\models\UserIdentity;
 
 /**
  * This is the model class for table "user".
@@ -13,17 +14,20 @@ use Yii;
  * @property string $auth_key
  * @property string $access_token
  */
-class AddAdmin extends \yii\db\ActiveRecord
+class AddAdmin extends Model
 {
+
+    public $username;
+    public $password;
 
     private $_user = false;
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
-    {
-        return 'user';
-    }
+//    public static function tableName()
+//    {
+//        return 'user';
+//    }
 
     /**
      * {@inheritdoc}
@@ -32,7 +36,8 @@ class AddAdmin extends \yii\db\ActiveRecord
     {
         return [
             [['username','password'], 'required'],
-            [['username'], 'string','validateUsername'],
+            ['username', 'string'],
+            ['username', 'validateUsername'],
         ];
     }
 

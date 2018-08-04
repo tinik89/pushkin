@@ -9,10 +9,9 @@
 
 namespace app\components;
 
+use app\models\UserIdentity;
 use yii\base\Widget;
-use app\models\AddAdmin;
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use app\models\forms\AddAdmin;
 use Yii;
 
 class AdminWidget extends Widget
@@ -20,17 +19,7 @@ class AdminWidget extends Widget
     public function run()
     {
         $addAdmin = new AddAdmin();
-        if( Yii::$app->request->post('AddAdmin')){
-            $formData = Yii::$app->request->post();
-            $formData['AddAdmin']['password'] = md5($formData['AddAdmin']['password']);
-            if ($addAdmin->load($formData)) {
-                $message = 'админ получен!';
-                if ($addAdmin->save()) {
-                    $message .= 'админ добавлен!';
 
-                }
-            }
-        }
 
         return $this->render('addAdmin', ['model' => $addAdmin]);
 

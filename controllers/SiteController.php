@@ -2,12 +2,14 @@
 
 namespace app\controllers;
 
+use app\models\UserIdentity;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
+use app\models\forms\LoginForm;
+use app\models\forms\AddAdmin;
+use yii\widgets\ActiveForm;
 
 class SiteController extends AppController
 {
@@ -55,10 +57,8 @@ class SiteController extends AppController
     }
 
 
-    public function goLogin()
-    {
-        return Yii::$app->getResponse()->redirect('/login');
-    }
+
+
     /**
      * Displays homepage.
      *
@@ -68,7 +68,7 @@ class SiteController extends AppController
     public function actionIndex()
     {
         if (Yii::$app->user->isGuest) {
-            return $this->goLogin();
+            return parent::goLogin();
         }
         return $this->render('index');
     }
@@ -111,7 +111,7 @@ class SiteController extends AppController
     public function actionDebts()
     {
         if (Yii::$app->user->isGuest) {
-            return $this->goLogin();
+            return parent::goLogin();
         }
 
         return $this->render('debets');
@@ -137,6 +137,8 @@ class SiteController extends AppController
     {
         return $this->render('communications');
     }
+
+
 
 
 }

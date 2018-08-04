@@ -1,6 +1,7 @@
 /* Preloader */
 $(window).on("load", function() {
-	
+// $(document).on("ready", function() {
+
 	/*preload*/
 	var preload = $('.preloader');
 	preload.find('.spinner').fadeOut(function(){
@@ -26,6 +27,27 @@ $(function() {
             $('.overlay').fadeOut(250);
         });
         return false;
+    });
+
+    $('#add-admin-form button').on('click', function () {
+        var $yiiform = $(this).parents('form');
+        $yiiform.append('<input type="hidden" name="identSubmit" value="submit"/>');
+        var dataForm = $yiiform.serializeArray();
+        $yiiform.children('input[name=identSubmit]').remove();
+        // отправляем данные на сервер
+        console.log($yiiform.serializeArray());
+        $.ajax({
+			type: $yiiform.attr('method'),
+			url: $yiiform.attr('action'),
+			data: dataForm,
+            success: function(msg){
+				console.log(msg);
+                $yiiform.find('input.form-control').val('');
+                $yiiform.find('.mess').text(msg);
+            }
+		});
+
+        return false; // отменяем отправку данных формы
     });
 	// ENDtin
 

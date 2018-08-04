@@ -8,8 +8,14 @@
 
 namespace app\controllers;
 use yii\web\Controller;
+use Yii;
 
 class AppController extends Controller
 {
+
+    public static function goLogin()
+    {
+        return Yii::$app->getResponse()->redirect('/site/login');
+    }
 
 }
